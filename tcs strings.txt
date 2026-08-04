@@ -1,0 +1,1179 @@
+Check if the given String is Palindrome or not
+
+
+#include<stdio.h>
+#include<string.h>
+
+int polindrome(char *str)
+{
+    int len=strlen(str)-1;
+    int i=0;
+    while(i<len)
+    {
+        if(str[i]!=str[len])
+        return 0;
+        i++;
+        len--;
+    }
+    return 1;
+}
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    if(polindrome(str))
+    printf("polindrome");
+    else
+    printf("not polindrome");
+}
+
+
+Count number of vowels, consonants, spaces in String
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int vowels=0,consonants=0,whitespace=0;
+    for(int i=0;str[i];i++)
+    {
+        if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='A'||str[i]=='E'||str[i]=='I'||str[i]=='O'||str[i]=='U')
+        {
+            vowels++;
+        }
+        else if(str[i]==' ')
+        whitespace++;
+        else
+        consonants++;
+    }
+    printf("%d %d %d",vowels,whitespace,consonants);
+}
+
+
+
+Find the ASCII value of a character
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char c;
+    scanf("%c",&c);
+    printf("%d",c);
+}
+
+Remove all vowels from the String
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i];i++)
+    {
+       if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='A'||str[i]=='E'||str[i]=='I'||str[i]=='O'||str[i]=='U')
+       {
+           memmove(&str[i],&str[i+1],strlen(str)-i);
+           i--;
+       }
+    }
+    while(str[0]==' ')
+    memmove(str,str+1,strlen(str));
+    printf("%s",str);
+    
+}
+
+
+Remove Spaces from a String
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i];i++)
+    {
+       if(str[i]==' ')
+       {
+           memmove(&str[i],&str[i+1],strlen(str)-i);
+           i--;
+       }
+    }
+    
+    printf("%s",str);
+    
+}
+
+Remove characters from a string except alphabets
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i];i++)
+    {
+       if((str[i]<'A'||str[i]>'Z')&&(str[i]<'a'||str[i]>'z'))
+       {
+           memmove(&str[i],&str[i+1],strlen(str)-i);
+           i--;
+       }
+    }
+    while(str[0]==' ')
+    memmove(str,str+1,strlen(str));
+    
+    printf("%s",str);
+    
+}
+
+Reverse a String
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int len=strlen(str)-1;
+    int i=0;
+    while(i<len)
+    {
+       char temp=str[i];
+       str[i]=str[len];
+       str[len]=temp;
+        i++;
+        len--;
+    }
+    
+    printf("%s",str);
+    
+}
+
+
+Remove brackets from an algebraic expression
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i];i++)
+    {
+        if(str[i]=='('||str[i]==')')
+        {
+        memmove(&str[i],&str[i+1],strlen(str)-i);
+        i--;
+        }
+    }
+    while(str[0]==' ')
+    memmove(str,str+1,strlen(str));
+    puts(str);
+}
+
+
+Sum of the Numbers in a String
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int sum=0;
+    int num=0;
+    for(int i=0;str[i];i++)
+    {
+    
+        if(str[i]>='0'&&str[i]<='9')
+        {
+            num=num*10+(str[i]-'0');
+        }
+        else
+        {
+            sum+=num;
+            num=0;
+        }
+    }
+    sum+=num;
+    printf("%d",sum);
+}
+
+
+Capitalize first and last character of each word of a string
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char *ptr=str;
+    ptr=strtok(ptr," ");
+    while(ptr)
+    {
+       
+        int len=strlen(ptr);
+       if(ptr[0]>='a'&&ptr[0]<='z')
+       ptr[0]^=32;
+       if(ptr[len-1]>='a'&&ptr[len-1]<='z')
+       ptr[len-1]^=32;
+        printf("%s ",ptr);
+        ptr=strtok(NULL," ");
+    }
+
+}
+
+Calculate Frequency of characters in a String
+
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int freq[256]={0};
+    for(int i=0;str[i];i++)
+    {
+        freq[(unsigned)str[i]]++;
+    }
+    for(int i=0;i<256;i++)
+    {
+        if(freq[i]>0)
+        printf("%c=%d  ",i,freq[i]);
+    }
+}
+
+Find Non-repeating characters of a String
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int freq[256]={0};
+    for(int i=0;str[i];i++)
+    {
+        freq[(unsigned)str[i]]++;
+    }
+    for(int i=0;str[i];i++)
+    {
+        if(freq[(unsigned)str[i]]==1)
+        printf("%c",str[i]);
+    }
+}
+
+Check if two Strings are anagrams of each other
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char str1[100],str2[100];
+    fgets(str1,100,stdin);
+    str1[strlen(str1)-1]='\0';
+    fgets(str2,100,stdin);
+    str2[strlen(str2)-1]='\0';
+    int freq[256]={0};
+    if(strlen(str1)!=strlen(str2))
+    {
+        printf("false");
+        return 0;
+    }
+    for(int i=0;str1[i];i++)
+    {
+        freq[(unsigned)str1[i]]++;
+    }
+    for(int i=0;str2[i];i++)
+    {
+        freq[(unsigned)str2[i]]--;
+    }
+    for(int i=0;i<256;i++)
+    {
+        if(freq[i]!=0)
+        {
+        printf("false");
+        return 0;
+        }
+    }
+    printf("true");
+    return 0;
+}
+
+
+ Print all subsequences of one string
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int n=strlen(str);
+    printf("subsequences:\n");
+    for(int mask=1;mask<(1<<n);mask++)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            printf("%c",str[i]);
+        }
+        printf("\n");
+    }
+}
+
+
+Modify it to track the longest subsequence
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int n=strlen(str);
+    char large[100];
+    int max=0;
+    for(int mask=1;mask<(1<<n);mask++)
+    {
+        char temp[100];
+        int index=0;
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            {
+                temp[index++]=str[i];
+            }
+        }
+        temp[index]='\0';
+        if(index>max)
+        {
+        max=index;
+        strcpy(large,temp);
+        }
+    }
+    printf("%s\n",large);
+    printf("%d",max);
+}
+
+
+Reverse all subsequences (bitmask method)
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int n=strlen(str);
+    char large[100];
+    int max=0;
+    for(int mask=1;mask<(1<<n);mask++)
+    {
+        char temp[100];
+        int index=0;
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            {
+                temp[index++]=str[i];
+            }
+        }
+        temp[index]='\0';
+        int l=0,r=index-1;
+        while(l<r)
+        {
+            char t=temp[l];
+            temp[l]=temp[r];
+            temp[r]=t;
+            l++;
+            r--;
+        }
+        printf("%s  ",temp);
+    }
+    
+}
+
+
+Longest Common Subsequence (LCS) using BITMASK
+
+#include<stdio.h>
+#include<string.h>
+int issubsequence(char *sub,char *str)
+{
+    int i=0,j=0;
+    while(sub[i]&&str[j])
+    {
+        if(sub[i]==str[j])
+        i++;
+        j++;
+    }
+    return sub[i]=='\0';
+}
+int main()
+{
+    char A[20],B[20];
+    fgets(A,20,stdin);
+    fgets(B,20,stdin);
+    A[strlen(A)-1]='\0';
+    B[strlen(B)-1]='\0';
+    int n=strlen(A);
+    char large[20];
+    int max=0;
+    for(int mask=1;mask<(1<<n);mask++)
+    {
+        int index=0;
+        char sub[20];
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            {
+
+                sub[index++]=A[i];
+            }
+        }
+        sub[index]='\0';
+        if(issubsequence(sub,B))
+        {
+            if(index>max)
+            {
+                max=index;
+                strcpy(large,sub);
+            }
+        }
+    }
+    printf("%s\n",large);
+    printf("%d",max);
+}
+
+to generate substrings 
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int count=0;
+    int len=strlen(str);
+    for(int i=0;i<len;i++)
+    {
+        for(int j=i;j<len;j++)
+        {
+            for(int k=i;k<=j;k++)
+            printf("%c",str[k]);
+            printf("\n");
+            count++;
+        }
+    }
+    printf("%d",count);
+}
+
+longest common substring
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100],B[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    fgets(B,100,stdin);
+    B[strlen(B)-1]='\0';
+    int max=0;
+    int len=strlen(str);
+    char large[20];
+    for(int i=0;i<len;i++)
+    {
+        for(int j=i;j<len;j++)
+        {
+            char sub[20];
+            int l=0;
+            for(int k=i;k<=j;k++)
+            sub[l++]=str[k];
+           sub[l]='\0';
+          if(strstr(B,sub)!=NULL)
+          {
+              if(l>max)
+              {
+              max=l;
+              strcpy(large,sub);
+              }
+              
+          }
+        }
+    }
+    printf("%s",large);
+    printf("%d",max);
+   
+}
+
+
+
+ALL longest common substrings
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100],B[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    fgets(B,100,stdin);
+    B[strlen(B)-1]='\0';
+    int max=0;
+    int len=strlen(str);
+    char large[20][20];
+    int count=0;
+    for(int i=0;i<len;i++)
+    {
+        for(int j=i;j<len;j++)
+        {
+            char sub[20];
+            int l=0;
+            for(int k=i;k<=j;k++)
+            sub[l++]=str[k];
+           sub[l]='\0';
+          if(strstr(B,sub)!=NULL)
+          {
+              if(l>max)
+              {
+              max=l;
+              count=0;
+              strcpy(large[count++],sub);
+              }
+              else if(l==max)
+              {
+                  int found=0;
+                  for(int m=0;m<count;m++)
+                  {
+                  if(strcmp(large[m],sub)==0)
+                  {
+                      found=1;
+                      break;
+                  }
+                  }
+                  if(!found)
+                  strcpy(large[count++],sub);
+              }
+              
+          }
+        }
+    }
+   for(int i=0;i<count;i++)
+   {
+       printf("%s\n",large[i]);
+   }
+   
+}
+
+
+Maximum occurring character in a string
+
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char freq[1000]={0};
+    int max=0;
+    char result;
+    for(int i=0;str[i];i++)
+    {
+       freq[str[i]]++;
+    }
+   for(int i=0;str[i];i++)
+   {
+       if(freq[str[i]]>max)
+       {
+       max=freq[str[i]];
+       result=str[i];
+       }
+       
+   }
+   printf("%c %d",result,max);
+}
+
+
+Remove All Duplicates from a String
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char *ptr=str;
+    for(int i=0;str[i];i++)
+    {
+        while(ptr=strchr(str+i+1,str[i]))
+        {
+            memmove(ptr,ptr+1,strlen(ptr));
+        }
+    }
+    printf("%s",str);
+}
+
+
+(keep only non-repeated characters)
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);str[strlen(str)-1]='\0';
+   
+    for(int i=0;str[i];)
+    {
+         char *ptr;
+        if((ptr=strchr(str+i+1,str[i]))!=NULL)
+        {
+            char c=str[i];
+            char *k;
+            while((k=strchr(str,c))!=NULL)
+            {
+            memmove(k,k+1,strlen(k));
+            }
+            
+        }
+        else
+        {
+            i++;
+        }
+    }
+  printf("%s",str); 
+}
+
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strcspn(str,"\n")] = '\0';
+
+    char result[100];
+    int k = 0;
+
+    for(int i=0; str[i]; i++)
+    {
+        int count = 0;
+        for(int j=0; str[j]; j++)
+        {
+            if(str[i] == str[j])
+                count++;
+        }
+
+        if(count == 1)
+            result[k++] = str[i];
+    }
+
+    result[k] = '\0';
+
+    printf("%s", result);
+}
+
+
+
+Print all the duplicates in the string
+
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[100];
+    fgets(str, 100, stdin);
+    str[strcspn(str, "\n")] = '\0';
+
+    int freq[1000] = {0};
+
+    // Count frequency
+    for(int i = 0; str[i]; i++)
+    {
+        freq[str[i]]++;
+    }
+
+    int found = 0;
+    printf("[");
+
+    for(int i = 0; i < 1000; i++)
+    {
+        if(freq[i] > 1)
+        {
+            if(found)
+                printf(", ");
+            printf("%c: %d", i , freq[i]);
+            found = 1;
+        }
+    }
+
+    printf("]");
+
+    return 0;
+}
+
+
+Remove Characters from first String present in the Second String
+
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str1[100];
+    scanf("%s",str1);
+    char str2[100];
+    scanf("%s",str2);
+    char freq[256]={0};
+    for(int i=0;str2[i];i++)
+    {
+        freq[str2[i]]=1;
+    }
+    int k=0;
+    for(int i=0;str1[i];i++)
+    {
+        if(freq[str1[i]]==0)
+        str1[k++]=str1[i];
+    }
+    str1[k]='\0';
+    printf("%s",str1);
+    
+}
+
+
+Change every letter with next lexicographic alphabet
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    scanf("%s",str);
+    for(int i=0;str[i];i++)
+    {
+        if(str[i]=='z')
+        str[i]='a';
+        else
+        str[i]=str[i]+1;
+    }
+    printf("%s",str);
+}
+
+
+Find the largest word in a String
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char *ptr;
+    int max=0;
+    char large[100];
+    ptr=strtok(str," ");
+    while(ptr)
+    {
+        int len=strlen(ptr);
+        if(len>max)
+        {
+            max=len;
+            strcpy(large,ptr);
+        }
+        ptr=strtok(NULL," ");
+    }
+    printf("%s",large);
+}
+
+
+Write a program to sort characters in a string
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    int n=strlen(str);
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+            if(str[j]>str[j+1])
+            {
+                char temp=str[j];
+                str[j]=str[j+1];
+                str[j+1]=temp;
+            }
+        }
+    }
+    printf("%s",str);
+}
+
+
+Count the number of words in a given string
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+   char *ptr;
+   int count=0;
+   ptr=strtok(str," ");
+   while(ptr)
+   {
+       count++;
+       ptr=strtok(NULL," ");
+   }
+   printf("%d",count);
+}
+
+
+Remove Repeated Characters Completely (Case-Insensitive)
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char freq[1000]={0};
+    for(int i=0;str[i];i++)
+    {
+        char ch=str[i];
+        if(ch>='A'&&ch<='Z')
+        ch^=32;
+        if(ch>='a'&&ch<='z')
+        freq[ch]++;
+    }
+    int k=0;
+    for(int i=0;str[i];i++)
+    {
+        char ch=str[i];
+        if(ch>='A'&&ch<='Z')
+        ch^=32;
+        if(ch>='a'&&ch<='z')
+        {
+            if(freq[ch]==1)
+            str[k++]=ch;
+        }
+    }
+    str[k]='\0';
+    printf("%s",str);
+    
+}
+
+
+Find word with highest number of repeated letters in string
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char freq[1000]={0};
+    char *ptr;
+    ptr=strtok(str," ");
+    int max=1;
+    char result[100];
+    while(ptr)
+    {
+        char freq[1000]={0};
+        int local=0;
+        int len=strlen(ptr);
+        for(int i=0;ptr[i];i++)
+        {
+            freq[ptr[i]]++;
+            if(freq[ptr[i]]>local)
+            local=freq[ptr[i]];
+        }
+        if(local>max)
+        {
+        max=local;
+        strcpy(result,ptr);
+        }
+    ptr=strtok(NULL," ");
+    }
+    if(max>1)
+    printf("%s",result);
+    
+    
+}
+
+
+Change case of each character in a string
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    for(int i=0;str[i];i++)
+    {
+        if((str[i] >= 'A' && str[i] <= 'Z') ||
+           (str[i] >= 'a' && str[i] <= 'z'))
+        str[i]^=32;
+    }
+    puts(str);
+}
+
+Concatenate one string to another
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str1[20];
+    char str2[20];
+    scanf("%s",str1);
+    scanf("%s",str2);
+    int len=strlen(str1);
+    int i;
+    for(i=0;str2[i];i++)
+    {
+        str1[len+i]=str2[i];
+    }
+    str1[len+i]='\0';
+    printf("%s",str1);
+    
+}
+
+
+Find the Position of a Substring within a String
+
+#include<stdio.h>
+#include<string.h>
+int substring(char *str1,char *str2)
+{
+    int len=strlen(str1);
+    int j;
+    for(int i=0;str1[i];i++)
+    {
+        if(str1[i]==str2[0])
+        {
+            for(j=0;str2[j];j++)
+            {
+                if(str1[i+j]!=str2[j])
+                break;
+            }
+            if(str2[j]=='\0')
+            return i;
+        }
+    }
+    return -1;
+}
+int main()
+{
+    char str1[20];
+    char str2[20];
+    scanf("%s",str1);
+    scanf("%s",str2);
+    printf("%d",substring(str1,str2));
+    
+}
+
+
+Reverse Words in a String
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    fgets(str,100,stdin);
+    str[strlen(str)-1]='\0';
+    char *str1[20];
+    char *ptr;
+    int count=0;
+    ptr=strtok(str," ");
+    while(ptr)
+    {
+        str1[count++]=ptr;
+        ptr=strtok(NULL," ");
+    }
+    for(int i=count-1;i>=0;i--)
+    {
+        printf("%s ",str1[i]);
+    }
+}
+
+
+find first non repeating character
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    int hash[256]={0};
+    scanf("%s",str);
+    for(int i=0;str[i];i++)
+    hash[str[i]]++;
+    for(int i=0;str[i];i++)
+    {
+        if(hash[str[i]]==1)
+        {
+            printf("%c",str[i]);
+            return 0;
+        }
+    }
+}
+
+GENERATE ALL subsets of a string
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    scanf("%s",str);
+    int n=strlen(str);
+    for(int mask=1;mask<(1<<n);mask++)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            {
+                printf("%c",str[i]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+count all subarray with sum=k
+
+
+#include<stdio.h>
+int main()
+{
+    int arr[100];
+    int n,k;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    scanf("%d",&k);
+    int count=0;
+    for(int i=0;i<n;i++)
+    {
+        int sum=0;
+        for(int j=i;j<n;j++)
+        {
+            sum+=arr[j];
+            if(sum==k)
+            {
+                count++;
+                for(int x=i;x<=j;x++)
+                printf("%d ",arr[x]);
+                printf("\n");
+            }
+        }
+    }
+    printf("%d ",count);
+}
+
+
+Subset with Sum = k (Without Recursion)
+
+
+#include<stdio.h>
+int main()
+{
+    int arr[100];
+    int n,k;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    scanf("%d",&k);
+    int count=0;
+    for(int mask=0;mask<(1<<n);mask++)
+    {
+        int sum=0;
+        for(int i=0;i<n;i++)
+        {
+            if(mask&(1<<i))
+            sum+=arr[i];
+            
+        }
+        if(sum==k)
+        {
+            for(int i=0;i<n;i++)
+            {
+                if(mask&(1<<i))
+                printf("%d ",arr[i]);
+                
+            }
+            printf("\n");
+            count++;
+        }
+    }
+    printf("%d ",count);
+}
+
+
+
+
