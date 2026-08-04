@@ -1,0 +1,216 @@
+1 - Coding Question on strings
+Input: Hello World 
+Output : Olleh Dlrow
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    gets(str);
+    puts(str);
+    printf("\n");
+    char *p=strtok(str," ");
+    while(p)
+    {
+        int len=strlen(p);
+        p[0]^=32;
+        p[len-1]^=32;
+        int i=0,j=len-1;
+       
+        while(i<j)
+        {
+           int temp=p[i];
+           p[i]=p[j];
+           p[j]=temp;
+           i++;
+           j--;
+           
+        }
+        printf("%s ",p);
+        p=strtok(NULL," ");
+        
+        
+    }
+}
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+     int arr[50];
+     int n;
+     scanf("%d",&n);
+     for(int i=0;i<n;i++)
+     {
+         scanf("%d",&arr[i]);
+     }
+     for(int i=0;i<n;i++)
+     {
+         printf("%d",arr[i]);
+         printf("\n");
+     }
+     int count=0;
+     for(int i=0;i<n;i++)
+     {
+         int rem=arr[i]%3;
+         if(arr[i]%3!=0)
+         {
+             count+=(rem<3-rem)?rem:3-rem;
+         }
+     }
+     printf("%d",count);
+}
+
+Reduce the string by removing K consecutive identical characters
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    gets(str);
+    int k;
+    scanf("%d",&k);
+    int i=0;
+    while(str[i]!='\0')
+    {
+        int count=1;
+        while(str[i+count]==str[i])
+        count++;
+        if(count>=k)
+        {
+            memmove(&str[i],&str[i+k],strlen(&str[i+k])+1);
+            if(i>0)
+            i--;
+        }
+        else
+        i+=count;
+    }
+    printf("%s",str);
+}
+
+reverse words in string
+
+i love aish
+i evol hsia
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    gets(str);
+    char *p=str;
+    p=strtok(p," ");
+    while(p)
+    {
+        int i=0;
+        int j=strlen(p)-1;
+        while(i<j)
+        {
+            int temp=p[i];
+            p[i]=p[j];
+            p[j]=temp;
+            i++;
+            j--;
+        }
+        printf("%s ",p);
+        p=strtok(NULL," ");
+    }
+}
+
+
+i love c program
+program c love i
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100];
+    char *str1[100];
+    int count=0;
+    gets(str);
+    char *p=str;
+    p=strtok(p," ");
+    while(p)
+    {
+        str1[count++]=p;
+        p=strtok(NULL," ");
+    }
+    for(int i=count-1;i>=0;i--)
+    {
+        printf("%s ",str1[i]);
+    }
+}
+
+find pairs in array whose sum is target
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int arr[100];
+    int target;
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    scanf("%d",&target);
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i]+arr[j]==target)
+            {
+                printf("%d %d\n",arr[i],arr[j]);
+            }
+        }
+    }
+}
+
+merge two sorted arrays
+
+#include <stdio.h>
+
+int main()
+{
+    int a[100], b[100], c[200];
+    int n1, n2;
+
+    scanf("%d", &n1);
+    for(int i = 0; i < n1; i++)
+        scanf("%d", &a[i]);
+
+    scanf("%d", &n2);
+    for(int i = 0; i < n2; i++)
+        scanf("%d", &b[i]);
+
+    int i = 0, j = 0, k = 0;
+
+    while(i < n1 && j < n2)
+    {
+        if(a[i] <= b[j])
+            c[k++] = a[i++];
+        else
+            c[k++] = b[j++];
+    }
+
+    while(i < n1)
+        c[k++] = a[i++];
+
+    while(j < n2)
+        c[k++] = b[j++];
+
+    printf("Merged array:\n");
+
+    for(i = 0; i < k; i++)
+        printf("%d ", c[i]);
+
+    return 0;
+}
